@@ -1,0 +1,56 @@
+<div class="title-text-wrapper">
+  <p class="song-title" [textContent]="currentTitle" [ngClass]="titlePresent ? 'scroll-text' : ''">
+  </p>
+</div>
+
+<ion-grid class="ion-margin-top">
+  <ion-row class="ion-margin-bottom">
+    <ion-col size="10">
+      <ion-progress-bar [value]="timeElapsed" [buffer]="amountBuffered"></ion-progress-bar>
+    </ion-col>
+    <ion-col class="ion-no-padding" size="2">
+      <span [textContent]="songDuration"></span>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<div id="hidden-player">
+  <audio #audio autoplay preload="none"
+    (timeupdate)="timeUpdate($event)"
+    (progress)="bufferProgress($event)"
+    (ended)="trackEnded($event)"            
+    (error)="playbackError($event)">
+    <source #source src="">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<ion-grid class="ion-margin-bottom ion-no-padding">
+  <ion-row align-items-center>
+    <ion-col size="2">
+      <ion-button expand="block" fill="clear" class="ion-no-padding" [color]="saved ? 'danger' : 'dark'" (click)="toggleSave()">
+        <ion-icon name="heart" class="small"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button expand="block" fill="clear" color="dark" class="ion-no-padding" (click)="playPrevious()">
+        <ion-icon name="skip-backward" class="medium"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button expand="block" size="large" fill="clear" color="dark" class="ion-no-padding" (click)="playPause()">
+        <ion-icon [name]="playToggleIcon" class="large"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2" class="ion-text-center">
+      <ion-button expand="block" fill="clear" color="dark" class="ion-no-padding" (click)="playNext()">
+        <ion-icon name="skip-forward" class="medium"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button expand="block" fill="clear" class="ion-no-padding" [color]="repeatOn ? 'primary' : 'dark'" (click)="toggleRepeat()">
+        <ion-icon name="repeat" class="small"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

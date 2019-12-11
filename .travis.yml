@@ -1,0 +1,30 @@
+dist: xenial
+sudo: false
+
+language: node_js
+node_js:
+  - "11"
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - ./node_modules
+
+before_script:
+  - npm install -g @angular/cli
+
+install:
+  - npm install
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+script:
+  - npm test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox

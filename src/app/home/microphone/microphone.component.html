@@ -1,0 +1,4 @@
+<div class="ion-text-center mic-wrapper">
+  <div [ngClass]="loading ? 'loading' : ''"></div>
+  <ion-icon name="mic" id="mic" (click)="listen()" [ngClass]="isListening ? 'pulse' : ''"></ion-icon>
+</div>

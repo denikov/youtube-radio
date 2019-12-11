@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>History</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <p class="ion-padding" *ngIf="tracks.length === 0; else showTracks">
+    No Recently Played
+  </p>
+
+  <ng-template #showTracks>
+
+    <ion-list *ngFor="let track of tracks; let i = index">
+      <ion-item-sliding>
+        <ion-item (click)="play(track.id)">
+          <ion-icon slot="start" name="musical-notes"></ion-icon>
+          <ion-label class="ion-text-wrap">
+            {{ track.title }}
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option (click)="remove(i)" color="danger">Remove</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+  </ng-template>
+
+</ion-content>
