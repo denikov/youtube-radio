@@ -1,3 +1,6 @@
+## Status
+[![Build Status](https://travis-ci.org/denikov/youtube-radio.svg?branch=master)](https://travis-ci.org/denikov/youtube-radio)
+
 # youtube-radio
 Play audio streams from YouTube's videos directly on your phone with this Ionic Framework/Angular application.
 
